@@ -1,0 +1,45 @@
+Safety On Snow:
+    Code:
+        ☐ Get data
+            ☐ Convert GoPro videos to csv files
+            ☐ Filter all csv files
+            ☐ Combine all csv files into 1 files
+            ☐ Create an output csv files
+        ☐ Artifial Intelligence
+            ☐ Import csv files into DataFrame
+            ☐ Create a Neuronal Network
+            ☐ Train the Artifial Intelligence
+            ☐ Save the AI's Neuronal Network
+
+    -------------------------------------------------
+
+    3DModels:
+        ☐ Get all components size
+        ☐ Design SOS box
+        ☐ Design SOS bracelet
+        ☐ Print box
+        ☐ Print bracelet
+
+    -------------------------------------------------    
+
+    Components:
+        Processor:
+            ☐ Raspberry Pi 3B+
+
+        Sensor:
+            ☐ Raspberry Pi Sense Hat
+            ☐ Module Breakout GPS
+            ☐ Capteur de courant
+
+        Output:
+            ☐ Son 
+            ☐ Vibration
+
+        Battery:
+            ☐ Batterie Li-ion
+
+    -------------------------------------------------
+
+
+    SysML:
+        ☐ Creer le SysML
