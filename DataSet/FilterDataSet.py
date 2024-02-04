@@ -10,3 +10,13 @@ GH011015_acc_df = pd.read_csv('DataSet/csvFiles/GH011015_HERO9 Black-ACCL.csv')
 GH011015_gyr_df = pd.read_csv('DataSet/csvFiles/GH011015_HERO9 Black-GYRO.csv')
 GH011042_acc_df = pd.read_csv('DataSet/csvFiles/GH011042_HERO9 Black-ACCL.csv')
 GH011042_gyr_df = pd.read_csv('DataSet/csvFiles/GH011042_HERO9 Black-GYRO.csv')
+
+print(GH011015_acc_df.head())
+
+GH011015_acc_df = GH011015_acc_df.drop(axis=1, columns='temperature [°C]')
+GH011015_acc_df = GH011015_acc_df.rename(columns={'Accelerometer [m/s2]': 'x', '1': 'y', '2': 'z'})
+
+print(GH011015_acc_df.head())
+
+GH011015_acc_df.plot(x='cts',y='x')
+plt.show()
