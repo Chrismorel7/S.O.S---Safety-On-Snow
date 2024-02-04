@@ -18,5 +18,9 @@ GH011015_acc_df = GH011015_acc_df.rename(columns={'Accelerometer [m/s2]': 'x', '
 
 print(GH011015_acc_df.head())
 
-GH011015_acc_df.plot(x='cts',y='x')
+ax = plt.gca()
+
+GH011015_acc_df.plot(x='cts',y='x', ax=ax)
+GH011015_acc_df.plot(x='cts',y='y', ax=ax, color='red')
+GH011015_acc_df.plot(x='cts',y='z', ax=ax, color='green')
 plt.show()
