@@ -20,7 +20,23 @@ print('011015_acc :')
 print(GH011015_acc_df.describe())
 print('\n\n')
 
-
 for i in range(len(GH011015_acc_df)):
-    if GH011015_acc_df.iloc[i]["Accelerometer [m/s2]"] >= 40:
+    if GH011015_acc_df.loc[i]["Accelerometer [m/s2]"] >= 40:
+        print(GH011015_acc_df.loc[i]["Accelerometer [m/s2]"])
+        GH011015_acc_df.loc[i,['fall']] = int(1)
+        print(GH011015_acc_df.loc[i]["Accelerometer [m/s2]"])
+    elif GH011015_acc_df.loc[i]["1"] >= 40:
+        print(GH011015_acc_df.loc[i]["1"])
+        GH011015_acc_df.loc[i,['fall']] = int(1)
+        print(GH011015_acc_df.loc[i]["1"])
+    elif GH011015_acc_df.loc[i]["2"] >= 40:
+        print(GH011015_acc_df.loc[i]["2"])
+        GH011015_acc_df.loc[i,['fall']] = int(1)
+        print(GH011015_acc_df.loc[i]["2"])
+    else :
+        GH011015_acc_df.loc[i,['fall']] = int(0)
         
+print("\n\n")
+print('011015_acc :')
+print(GH011015_acc_df.describe())
+print('\n\n')
