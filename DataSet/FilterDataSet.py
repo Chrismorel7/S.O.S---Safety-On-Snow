@@ -20,14 +20,7 @@ print('011015_acc :')
 print(GH011015_acc_df.describe())
 print('\n\n')
 
-print('011015_gyr :')
-print(GH011015_gyr_df.describe())
-print('\n\n')
 
-print('011042_acc :')
-print(GH011042_acc_df.describe())
-print('\n\n')
-
-print('011042_gyr :')
-print(GH011042_gyr_df.describe())
-print('\n\n')
+for i in range(len(GH011015_acc_df)):
+    if GH011015_acc_df.iloc[i]["Accelerometer [m/s2]"] >= 40:
+        
