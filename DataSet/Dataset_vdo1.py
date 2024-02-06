@@ -19,7 +19,7 @@ Video1_Input = Video1_Input.rename(columns={"Accelerometer [m/s2]": "acc_x",
                                             "gyr1": "gyr_y",
                                             "gyr2": "gyr_z"})
 
-Video1_Input = Video1_Input.reindex(["date", "acc_x", "acc_y", "acc_z", "gyr_x", "gyr_y", "gyr_z"], axis=1)
+Video1_Input = Video1_Input.reindex(["date", "acc_x", "acc_y", "acc_z", "gyr_x", "gyr_y", "gyr_z", "fall"], axis=1)
 
 for i in range(len(Video1_Input)):
     if Video1_Input.loc[i]["acc_x"] <= -49 or Video1_Input.loc[i]["acc_x"] >= 49:
@@ -34,4 +34,4 @@ for i in range(len(Video1_Input)):
 print(Video1_Input.head())
 print(Video1_Input.describe())
 
-Video1_Input.to_csv('DataSet/csvFiles/Video1_Input.csv')
+Video1_Input.to_csv('DataSet/csvFiles/Input_vdo1.csv')
