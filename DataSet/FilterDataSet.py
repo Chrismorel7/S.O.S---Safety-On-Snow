@@ -6,10 +6,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-GH011015_acc_df = pd.read_csv('DataSet/csvFiles/GH011015_HERO9 Black-ACCL.csv')
-GH011015_gyr_df = pd.read_csv('DataSet/csvFiles/GH011015_HERO9 Black-GYRO.csv')
-GH011042_acc_df = pd.read_csv('DataSet/csvFiles/GH011042_HERO9 Black-ACCL.csv')
-GH011042_gyr_df = pd.read_csv('DataSet/csvFiles/GH011042_HERO9 Black-GYRO.csv')
+GH011015_acc_df = pd.read_csv('DataSet/csvFiles/GH011015_HERO9 Black-ACCL.csv') #import video1 acc csv
+GH011015_gyr_df = pd.read_csv('DataSet/csvFiles/GH011015_HERO9 Black-GYRO.csv') #import video1 gyr csv
+GH011042_acc_df = pd.read_csv('DataSet/csvFiles/GH011042_HERO9 Black-ACCL.csv') #import video2 acc csv
+GH011042_gyr_df = pd.read_csv('DataSet/csvFiles/GH011042_HERO9 Black-GYRO.csv') #import video2 gyr csv
 
 GH011015_acc_df = GH011015_acc_df.drop(axis=1, columns={'temperature [°C]', 'cts'})
 GH011015_gyr_df = GH011015_gyr_df.drop(axis=1, columns={'temperature [°C]', 'cts'})
@@ -20,23 +20,16 @@ print('011015_acc :')
 print(GH011015_acc_df.describe())
 print('\n\n')
 
-for i in range(len(GH011015_acc_df)):
-    if GH011015_acc_df.loc[i]["Accelerometer [m/s2]"] >= 40:
-        print(GH011015_acc_df.loc[i]["Accelerometer [m/s2]"])
-        GH011015_acc_df.loc[i,['fall']] = int(1)
-        print(GH011015_acc_df.loc[i]["Accelerometer [m/s2]"])
-    elif GH011015_acc_df.loc[i]["1"] >= 40:
-        print(GH011015_acc_df.loc[i]["1"])
-        GH011015_acc_df.loc[i,['fall']] = int(1)
-        print(GH011015_acc_df.loc[i]["1"])
-    elif GH011015_acc_df.loc[i]["2"] >= 40:
-        print(GH011015_acc_df.loc[i]["2"])
-        GH011015_acc_df.loc[i,['fall']] = int(1)
-        print(GH011015_acc_df.loc[i]["2"])
-    else :
-        GH011015_acc_df.loc[i,['fall']] = int(0)
-        
-print("\n\n")
-print('011015_acc :')
-print(GH011015_acc_df.describe())
-print('\n\n')
+Video1_Input_acc = pd.DataFrame(GH011015_acc_df.drop(GH011015_acc_df.index[range(7674, len(GH011015_acc_df))]))
+print(Video1_Input_acc.head())
+Video1_Input_gyr = pd.DataFrame(GH011015_gyr_df.drop(GH011015_gyr_df.index[range(7674, len(GH011015_gyr_df))]))
+print(Video1_Input_gyr.head())
+
+Video1_Input = pd.merge(Video1_Input_acc, Video1_Input_gyr)
+
+Video1_Input = Video1_Input.rename(columns={"Accelerometer [m/s2]": "acc_x",
+                                            "acc1": "acc_y",
+                                            "acc2": "acc_z",
+                                            "Gyroscope [rad/s]": "gyr_x",
+                                            "gyr1": "gyr_y",
+                                            "gyr2": "gyr_z"})
