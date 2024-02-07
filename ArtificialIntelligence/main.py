@@ -5,43 +5,56 @@ import numpy as np
 class NeuralNetwork(object):
     """Artificial Intelligence's Neural Network code"""
     def __init__(self):
-        self.InputSize = None
-        self.HiddenSize = None
-        self.OutputSize = 1
-        self.W1 = np.random.randn(self.InputSize, self.HiddenSize)
-        self.W2 = np.random.randn(self.HiddenSize, self.OutputSize)
+        self.input_size = None
+        self.hidden_size = None
+        self.output_size = 1
+        self.w1 = np.random.randn(self.input_size, self.hidden_size)
+        self.w2 = np.random.randn(self.hidden_size, self.output_size)
+        self.z = None
+        self.z2 = None
+        self.z3 = None
+        self.output_error = None
+        self.output_delta = None
+        self.z2_error = None
+        self.z2_delta = None
 
     def sigmoid(self, x):
+        """Fonction sigmoid"""
         return 1/(1+np.exp(-x))
 
     def sigmoidprime(self, x):
+        """Fonction derivée de la fonction sigmoid"""
         return x*(1-x)
 
-    def forward(self, TRAIN_CONST):
-        self.z = np.dot(TRAIN_CONST, self.W1)
+    def forward(self, training_input):
+        """Fonction d'entrainement avec la méthode forward"""
+        self.z = np.dot(training_input, self.w1)
         self.z2 = self.sigmoid(self.z)
-        self.z3 = np.dot(self.z2, self.W2)
-        OutputAI = self.sigmoid(self.z3)
-        return OutputAI
+        self.z3 = np.dot(self.z2, self.w2)
+        ai_output = self.sigmoid(self.z3)
+        return ai_output
 
-    def backward(self, TRAIN_CONST, CONST_OUTPUT, OutputAI):
-        self.OutputError = CONST_OUTPUT - OutputAI
-        self.OutputDelta = self.OutputError * self.sigmoidprime(OutputAI)
-        self.z2Error = self.OutputDelta.dot(self.W2.T)
-        self.z2Delta = self.z2Error * self.sigmoidprime(self.z2)
-        self.W1 += TRAIN_CONST.T.dot(self.z2Delta)
-        self.W2 += self.z2.T.dot(self.OutputDelta)
+    def backward(self, training_input, training_output, ai_output):
+        """Fonction d'entrainement avec la méthode backward"""
+        self.output_error = training_output - ai_output
+        self.output_delta = self.output_error * self.sigmoidprime(ai_output)
+        self.z2_error = self.output_delta.dot(self.w2.T)
+        self.z2_delta = self.z2_error * self.sigmoidprime(self.z2)
+        self.w1 += training_input.T.dot(self.z2_delta)
+        self.w2 += self.z2.T.dot(self.output_delta)
 
-    def train(self, TRAIN_CONST, CONST_OUTPUT):
-        OutputAI = self.forward(TRAIN_CONST)
-        self.backward(TRAIN_CONST, CONST_OUTPUT, OutputAI)
+    def train(self, training_input, training_output):
+        """Fonction d'entrainement du model"""
+        ai_output = self.forward(training_input)
+        self.backward(training_input, training_output, ai_output)
 
-    def predict(self, TRAIN_CONST):
+    def predict(self, training_input):
+        """Fonction de prediction du résultat"""
         print("Donnée prédite après entrainement de l'IA : ")
-        print("Entrée : \n" + str(TRAIN_CONST))
-        print("Sortie : \n" + str(self.forward(TRAIN_CONST)))
+        print("Entrée : \n" + str(training_input))
+        print("Sortie : \n" + str(self.forward(training_input)))
 
-        if self.forward(TRAIN_CONST) < 0.5:
+        if self.forward(training_input) < 0.5:
             print("Il n'y a pas de chute ! \n")
         else:
             print("Il y a une chute ! \n")
