@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-class DataSet1(object):
+class DataSet(object):
     """Create a DataSet based on video 1 data."""
     def __init__(self):
         self.df_acc = pd.DataFrame()
@@ -64,6 +64,6 @@ class DataSet1(object):
             else :
                 self.input.loc[i,['fall']] = int(0)
 
-    def createcsv(self):
+    def createcsv(self, path):
         """Create a csv based on input DataFrame"""
-        self.input.to_csv('DataSet/csvFiles/Input_vdo1.csv')
+        self.input.to_csv(path)
