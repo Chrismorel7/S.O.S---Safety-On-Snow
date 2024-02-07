@@ -35,6 +35,8 @@ class DataSet(object):
         """Merge the accelerometer and gyroscopic DataFrame"""
         self.input = pd.merge(self.input_acc, self.input_gyr)
 
+    def renamecolumns(self):
+        """Rename column of the Dataframe for a better understanding"""
         self.input = self.input.rename(columns={"Accelerometer [m/s2]": "acc_x",
                                                 "acc1": "acc_y",
                                                 "acc2": "acc_z",
