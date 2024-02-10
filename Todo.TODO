@@ -1,13 +1,13 @@
 Safety On Snow:
     Code:
         ☐ Get data
-            ☐ Convert GoPro videos to csv files
-            ☐ Filter all csv files
+            ✔ Convert GoPro videos to csv files @done (2/10/2024, 3:25:24 PM)
+            ✔ Filter all csv files @done (2/10/2024, 3:25:28 PM)
             ☐ Combine all csv files into 1 files
             ☐ Create an output csv files
         ☐ Artifial Intelligence
             ☐ Import csv files into DataFrame
-            ☐ Create a Neuronal Network
+            ✔ Create a Neuronal Network @done (2/10/2024, 3:25:44 PM)
             ☐ Train the Artifial Intelligence
             ☐ Save the AI's Neuronal Network
 
@@ -42,4 +42,4 @@ Safety On Snow:
 
 
     SysML:
-        ☐ Creer le SysML
+        ✔ Creer le SysML @done (2/10/2024, 3:25:53 PM)
