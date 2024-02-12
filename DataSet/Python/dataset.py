@@ -3,7 +3,7 @@
 import pandas as pd
 
 class DataSet(object):
-    """Create a DataSet based on video 1 data."""
+    """Create a DataSet based on GoPro video."""
     def __init__(self):
         self.df_acc = pd.DataFrame()
         self.df_gyr = pd.DataFrame()
