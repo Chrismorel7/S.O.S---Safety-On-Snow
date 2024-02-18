@@ -69,3 +69,4 @@ class DataSet(object):
     def createcsv(self, path):
         """Create a csv based on input DataFrame"""
         self.input.to_csv(path)
+        
