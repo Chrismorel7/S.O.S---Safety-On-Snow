@@ -35,3 +35,6 @@ Dataset3.input = pd.merge(df_acc_vdo_3, df_gyr_vdo_3, on='date')
 Dataset3.renamecolumns()
 Dataset3.addfallingdata(9999)
 Dataset3.input.to_csv('DataSet/csvFiles/Input_vdo3.csv')
+
+# ----------  ALL  ----------
+ds.

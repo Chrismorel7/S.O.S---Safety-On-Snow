@@ -70,7 +70,8 @@ class DataSet(object):
         """Create a csv based on input DataFrame"""
         self.input.to_csv(path)
         
-    def dfcombined(self, path1: str, path2: str, path3: str, pathoutput: str):
+
+def dfcombined(self, path1: str, path2: str, path3: str, pathoutput: str):
         """Combine all csv files into one
 
         Args:
