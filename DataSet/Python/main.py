@@ -37,4 +37,4 @@ Dataset3.addfallingdata(9999)
 Dataset3.input.to_csv('DataSet/csvFiles/Input_vdo3.csv')
 
 # ----------  ALL  ----------
-ds.
+ds.dfcombined()
