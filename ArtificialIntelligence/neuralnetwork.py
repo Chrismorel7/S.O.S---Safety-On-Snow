@@ -20,7 +20,7 @@ class NeuralNetwork(object):
 
     def sigmoid(self, x):
         """Fonction sigmoid"""
-        return 1/(1+np.exp(-x, dtype=np.longdouble))
+        return 1/(1+np.exp(-x, dtype=np.float64))
 
     def sigmoidprime(self, x):
         """Fonction derivée de la fonction sigmoid"""
