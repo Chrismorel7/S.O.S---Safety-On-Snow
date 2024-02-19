@@ -70,3 +70,17 @@ class DataSet(object):
         """Create a csv based on input DataFrame"""
         self.input.to_csv(path)
         
+    def dfcombined(self, path1: str, path2: str, path3: str, pathoutput: str):
+        """Combine all csv files into one
+
+        Args:
+            path1 (String): path leading to the first csv file
+            path2 (String): path leading to the second csv file
+            path3 (String): path leading to the third csv file
+        """
+        df1 = pd.read_csv(path1)
+        df2 = pd.read_csv(path2)
+        df3 = pd.read_csv(path3)
+        
+        df = pd.concat([df1, df2, df3], ignore_index=True)
+        df.to_csv(pathoutput)
