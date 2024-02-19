@@ -4,9 +4,9 @@ import numpy as np
 
 class NeuralNetwork(object):
     """Artificial Intelligence's Neural Network code"""
-    def __init__(self):
-        self.input_size = None
-        self.hidden_size = None
+    def __init__(self, input_size: int):
+        self.input_size = input_size
+        self.hidden_size = input_size + 1
         self.output_size = 1
         self.w1 = np.random.randn(self.input_size, self.hidden_size)
         self.w2 = np.random.randn(self.hidden_size, self.output_size)
@@ -20,7 +20,7 @@ class NeuralNetwork(object):
 
     def sigmoid(self, x):
         """Fonction sigmoid"""
-        return 1/(1+np.exp(-x))
+        return 1/(1+np.exp(-x, dtype=np.float256))
 
     def sigmoidprime(self, x):
         """Fonction derivée de la fonction sigmoid"""
@@ -48,13 +48,13 @@ class NeuralNetwork(object):
         ai_output = self.forward(training_input)
         self.backward(training_input, training_output, ai_output)
 
-    def predict(self, training_input):
+    def predict(self, predictingseries):
         """Fonction de prediction du résultat"""
         print("Donnée prédite après entrainement de l'IA : ")
-        print("Entrée : \n" + str(training_input))
-        print("Sortie : \n" + str(self.forward(training_input)))
+        print("Entrée : \n" + str(predictingseries))
+        print("Sortie : \n" + str(self.forward(predictingseries)))
 
-        if self.forward(training_input) < 0.5:
+        if self.forward(predictingseries) < 0.5:
             print("Il n'y a pas de chute ! \n")
         else:
             print("Il y a une chute ! \n")
