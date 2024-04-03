@@ -31,27 +31,27 @@ class NeuralNetwork(object):
         """Fonction d'entrainement avec la méthode forward"""        
         self.z = np.dot(training_input, self.w1)
         
-        print("\nTraining_input : ", pd.DataFrame(training_input).head())
-        print(pd.DataFrame(training_input).describe())
-        print("\nW1 : ", pd.DataFrame(self.w1).head())
-        print(pd.DataFrame(self.w1).describe())
-        print("\nZ : ", pd.DataFrame(self.z).head())
-        print(pd.DataFrame(self.z).describe())
+        #print("\nTraining_input : ", pd.DataFrame(training_input).head())
+        #print(pd.DataFrame(training_input).describe())
+        #print("\nW1 : ", pd.DataFrame(self.w1).head())
+        #print(pd.DataFrame(self.w1).describe())
+        #print("\nZ : ", pd.DataFrame(self.z).head())
+        #print(pd.DataFrame(self.z).describe())
         
         self.z2 = self.ReLu(self.z)
         
-        print("\nZ2 : ", pd.DataFrame(self.z2).head())
-        print(pd.DataFrame(self.z2).describe())
+        #print("\nZ2 : ", pd.DataFrame(self.z2).head())
+        #print(pd.DataFrame(self.z2).describe())
         
         self.z3 = np.dot(self.z2, self.w2)
 
-        print("\nZ3 : ", pd.DataFrame(self.z3).head())
-        print(pd.DataFrame(self.z3).describe())
+        #print("\nZ3 : ", pd.DataFrame(self.z3).head())
+        #print(pd.DataFrame(self.z3).describe())
         
         ai_output = self.ReLu(self.z3)
         
-        print("\nAI Output : ", pd.DataFrame(ai_output).head())
-        print(pd.DataFrame(ai_output).describe())
+        #print("\nAI Output : ", pd.DataFrame(ai_output).head())
+        #print(pd.DataFrame(ai_output).describe())
         
         return ai_output
 
