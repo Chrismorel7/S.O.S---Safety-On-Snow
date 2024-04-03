@@ -1,8 +1,9 @@
 """Artificial intelligence training programme"""
 
 import numpy as np
+import pandas as pd
 
-class NeuralNetwork(object):
+class NeuralNetwork(object):    
     """Artificial Intelligence's Neural Network code"""
     def __init__(self, input_size: int):
         self.input_size = input_size
@@ -28,10 +29,40 @@ class NeuralNetwork(object):
 
     def forward(self, training_input):
         """Fonction d'entrainement avec la méthode forward"""
+        
+        MAX_VALUE_EXP = 709
+        MIN_VALUE_EXP = -709
+        
         self.z = np.dot(training_input, self.w1)
+        
+        self.z[self.z > MAX_VALUE_EXP] = MAX_VALUE_EXP
+        self.z[self.z < MIN_VALUE_EXP] = MIN_VALUE_EXP
+        
+        #print("\nTraining_input : ", pd.DataFrame(training_input).head())
+        #print(pd.DataFrame(training_input).describe())
+        #print("\nW1 : ", pd.DataFrame(self.w1).head())
+        #print(pd.DataFrame(self.w1).describe())
+        #print("\nZ : ", pd.DataFrame(self.z).head())
+        #print(pd.DataFrame(self.z).describe())
+        
         self.z2 = self.sigmoid(self.z)
+        
+        #print("\nZ2 : ", pd.DataFrame(self.z2).head())
+        #print(pd.DataFrame(self.z2).describe())
+        
         self.z3 = np.dot(self.z2, self.w2)
+        
+        self.z3[self.z3 > MAX_VALUE_EXP] = MAX_VALUE_EXP
+        self.z3[self.z3 < MIN_VALUE_EXP] = MIN_VALUE_EXP
+        
+        #print("\nZ3 : ", pd.DataFrame(self.z3).head())
+        #print(pd.DataFrame(self.z3).describe())
+        
         ai_output = self.sigmoid(self.z3)
+        
+        #print("\nAI Output : ", pd.DataFrame(ai_output).head())
+        #print(pd.DataFrame(ai_output).describe())
+        
         return ai_output
 
     def backward(self, training_input, training_output, ai_output):
@@ -50,9 +81,9 @@ class NeuralNetwork(object):
 
     def predict(self, predictingseries):
         """Fonction de prediction du résultat"""
-        print("Donnée prédite après entrainement de l'IA : ")
-        print("Entrée : \n" + str(predictingseries))
-        print("Sortie : \n" + str(self.forward(predictingseries)))
+        print("\nDonnée prédite après entrainement de l'IA : ")
+        print("\nEntrée : \n" + str(predictingseries))
+        print("\nSortie : \n" + str(self.forward(predictingseries)))
 
         if self.forward(predictingseries) < 0.5:
             print("Il n'y a pas de chute ! \n")

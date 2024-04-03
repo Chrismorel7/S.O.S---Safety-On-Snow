@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import neuralnetwork as nn
 
-ITERATION = 100
+ITERATION = 1000
 
 df = pd.read_csv("DataSet/csvFiles/Input.csv")
 TrainingDF = df.drop(axis=1, columns={"newindex", "index", "date"})
@@ -20,6 +20,7 @@ print(training_outputdf.head())
 neuralnetwork = nn.NeuralNetwork(len(training_inputdf.axes[1]))
 
 for i in range(ITERATION):
+    print("\n\n\n ITERATION : ", i, "\n\n\n")
     neuralnetwork.train(training_inputdf, training_outputdf)
     
 neuralnetwork.predict([-73.54916067146283,
