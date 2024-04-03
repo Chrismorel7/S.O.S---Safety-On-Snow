@@ -5,9 +5,13 @@ import pandas as pd
 import numpy as np
 import neuralnetwork as nn
 
-ITERATION = 10000
+ITERATION = 20000
 
-df = pd.read_csv("DataSet/csvFiles/Input.csv")
+df = pd.read_csv("DataSet/csvFiles/test.csv")
+
+df = np.round(df)
+print(df.head(10))
+
 TrainingDF = df.drop(axis=1, columns={"newindex", "index", "date"})
 
 training_inputdf = TrainingDF.drop(axis=1, columns="fall")
