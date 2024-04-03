@@ -27,9 +27,9 @@ for i in range(ITERATION):
     print("\n\n\n ITERATION : ", i, "\n\n\n")
     neuralnetwork.train(training_inputdf, training_outputdf)
     
-neuralnetwork.predict([-73.54916067146283,
-                       60.57314148681055,
-                       -78.5779376498801,
-                       15.21618743343983,
-                       24.466453674121407,
-                       -24.293929712460063])
+neuralnetwork.predict([13.83453237410072,
+                       -68.81534772182255,
+                       -51.302158273381295,
+                       13.87220447284345,
+                       13.794462193823216,
+                       3.288604898828541,])
