@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import neuralnetwork as nn
 
-ITERATION = 1000
+ITERATION = 10000
 
 df = pd.read_csv("DataSet/csvFiles/test.csv")
 
@@ -26,6 +26,9 @@ neuralnetwork = nn.NeuralNetwork(len(training_inputdf.axes[1]))
 for i in range(ITERATION):
     print("\n\n\n ITERATION : ", i, "\n\n\n")
     neuralnetwork.train(training_inputdf, training_outputdf)
+    
+neuralnetwork.sauvegardePoids()
+print("Poids sauvegardé")
     
 neuralnetwork.predict([0.6546762589928061,
                        -2.7122302158273373,

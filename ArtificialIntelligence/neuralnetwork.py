@@ -28,9 +28,22 @@ class NeuralNetwork(object):
 
     def forward(self, training_input):
         """Fonction d'entrainement avec la méthode forward"""
+        
+        #MAX_VALUE_EXP = 709
+        #MIN_VALUE_EXP = -709
+        
         self.z = np.dot(training_input, self.w1)
+        
+        #self.z[self.z > MAX_VALUE_EXP] = MAX_VALUE_EXP
+        #self.z[self.z < MIN_VALUE_EXP] = MIN_VALUE_EXP
+        
         self.z2 = self.sigmoid(self.z)
+        
         self.z3 = np.dot(self.z2, self.w2)
+        
+        #self.z3[self.z3 > MAX_VALUE_EXP] = MAX_VALUE_EXP
+        #self.z3[self.z3 < MIN_VALUE_EXP] = MIN_VALUE_EXP
+        
         ai_output = self.sigmoid(self.z3)
         return ai_output
 
@@ -47,6 +60,10 @@ class NeuralNetwork(object):
         """Fonction d'entrainement du model"""
         ai_output = self.forward(training_input)
         self.backward(training_input, training_output, ai_output)
+        
+    def sauvegardePoids(self):
+        np.savetxt("w1.txt", self.w1, fmt="%s")
+        np.savetxt("w2.txt", self.w2, fmt="%s")
 
     def predict(self, predictingseries):
         """Fonction de prediction du résultat"""
