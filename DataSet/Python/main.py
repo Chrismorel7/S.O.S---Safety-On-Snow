@@ -52,7 +52,7 @@ Dataset1_delta.dropuselessvalues(7674, len(Dataset1_delta.df_acc))
 Dataset1_delta.mergedataframe()
 Dataset1_delta.renamecolumns()
 Dataset1_delta.input = Dataset1_delta.input.drop(axis=1, columns={'date'})
-Dataset1_delta.createdeltadf
+Dataset1_delta.createdeltadf()
 print(Dataset1_delta.input)
 print(Dataset1_delta.inputdelta)
 print(Dataset1_delta.input.dtypes)

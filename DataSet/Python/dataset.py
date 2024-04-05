@@ -56,7 +56,7 @@ class DataSet(object):
                                         axis=1)
         
     def createdeltadf(self):
-        self.inputdelta = self.input - self.input.shift(1)
+        self.inputdelta = self.input.shift(1) - self.input
 
     def addfallingdata(self, fallvaluelimit): #49
         """Add 1 (fall) or 0(user is ok) to the input DataFrame"""
