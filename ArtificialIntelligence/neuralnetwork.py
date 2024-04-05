@@ -18,6 +18,7 @@ class NeuralNetwork(object):
         self.output_delta = None
         self.z2_error = None
         self.z2_delta = None
+        self.ai_output = None
 
     def Sigmoid(self, x):
         """Fonction Sigmoid"""
@@ -32,7 +33,6 @@ class NeuralNetwork(object):
         
         MAX_VALUE_EXP = 709
         MIN_VALUE_EXP = -709
-               
         self.z = np.dot(training_input, self.w1)
         
         self.z[self.z > MAX_VALUE_EXP] = MAX_VALUE_EXP
@@ -58,17 +58,17 @@ class NeuralNetwork(object):
         #print("\nZ3 : ", pd.DataFrame(self.z3).head())
         #print(pd.DataFrame(self.z3).describe())
         
-        ai_output = self.Sigmoid(self.z3)
+        self.ai_output = self.Sigmoid(self.z3)
         
-        #print("\nAI Output : ", pd.DataFrame(ai_output).head())
-        #print(pd.DataFrame(ai_output).describe())
+        #print("\nAI Output : ", pd.DataFrame(self.ai_output).head())
+        #print(pd.DataFrame(self.ai_output).describe())
         
-        return ai_output
+        return self.ai_output
 
-    def backward(self, training_input, training_output, ai_output):
+    def backward(self, training_input, training_output):
         """Fonction d'entrainement avec la méthode backward"""
-        self.output_error = training_output - ai_output
-        self.output_delta = self.output_error * self.Sigmoidprime(ai_output)
+        self.output_error = training_output - self.ai_output
+        self.output_delta = self.output_error * self.Sigmoidprime(self.ai_output)
         self.z2_error = self.output_delta.dot(self.w2.T)
         self.z2_delta = self.z2_error * self.Sigmoidprime(self.z2)
         self.w1 += training_input.T.dot(self.z2_delta)
@@ -76,8 +76,8 @@ class NeuralNetwork(object):
 
     def train(self, training_input, training_output):
         """Fonction d'entrainement du model"""
-        ai_output = self.forward(training_input)
-        self.backward(training_input, training_output, ai_output)
+        self.ai_output = self.forward(training_input)
+        self.backward(training_input, training_output)
 
     def predict(self, predictingseries):
         """Fonction de prediction du résultat"""

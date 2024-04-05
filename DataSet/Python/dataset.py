@@ -10,6 +10,7 @@ class DataSet(object):
         self.input_acc = pd.DataFrame()
         self.input_gyr = pd.DataFrame()
         self.input = pd.DataFrame()
+        self.inputdelta = pd.DataFrame()
 
     def getdataframeacc(self, path):
         """Create a Dataframe based on acc csv"""
@@ -53,6 +54,9 @@ class DataSet(object):
                                         "gyr_z",
                                         "fall"],
                                         axis=1)
+        
+    def createdeltadf(self):
+        self.inputdelta = self.input - self.input.shift(1)
 
     def addfallingdata(self, fallvaluelimit): #49
         """Add 1 (fall) or 0(user is ok) to the input DataFrame"""
@@ -70,6 +74,9 @@ class DataSet(object):
         """Create a csv based on input DataFrame"""
         self.input.to_csv(path)
         
+    def createdeltacsv(self, path):
+        """Create a csv based on input DataFrame"""
+        self.inputdelta.to_csv(path)
 
 def dfcombined(path1: str, path2: str, path3: str, pathoutput: str):
         """Combine all csv files into one
