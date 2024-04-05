@@ -12,7 +12,7 @@ df = pd.read_csv("DataSet/csvFiles/test.csv")
 df = np.round(df)
 print(df.head(10))
 
-TrainingDF = df.drop(axis=1, columns={"newindex", "index", "date"})
+TrainingDF = df.drop(axis=1, columns={"index"})
 
 training_inputdf = TrainingDF.drop(axis=1, columns="fall")
 training_outputdf = TrainingDF['fall'].to_frame()
@@ -26,11 +26,19 @@ neuralnetwork = nn.NeuralNetwork(len(training_inputdf.axes[1]))
 for i in range(ITERATION):
     print("\n\n\n ITERATION : ", i, "\n\n\n")
     neuralnetwork.train(training_inputdf, training_outputdf)
-    print(pd.DataFrame(neuralnetwork.ai_output).describe())
-    print(pd.DataFrame(neuralnetwork.output_error).describe())
     
-neuralnetwork.predict([-5.661870503597123,-0.5419664268585132,-19.429256594724222,-2.2492012779552715,1.919062832800852,-1.8562300319488816])
+neuralnetwork.predict([0.6546762589928061,
+                       -2.7122302158273373,
+                       0.8129496402877696,
+                       -0.05537806176783833,
+                       0.024494142705005308,
+                       -0.09371671991480302])
 
-neuralnetwork.predict([-78.24940047961631,-53.33093525179856,78.5779376498801,-0.8402555910543131,19.64856230031949,3.4195953141640043])
+neuralnetwork.predict([-87.17266187050359,
+                       98.71702637889689,
+                       -18.446043165467632,
+                       -4.795527156549522,
+                       -12.207667731629385,
+                       -18.82108626198083])
 
 print(pd.DataFrame(neuralnetwork.w2))
