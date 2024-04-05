@@ -1,11 +1,3 @@
-import numpy as np
-
-
-w2array = np.loadtxt("w2.txt").reshape(-1, 1)
-
-w1array = np.loadtxt("w1.txt")
-
-print("NumPy array:")
-print("\n\n",w1array)
-print("\n\n",w2array)
-
+import neuralnetwork as nn
+neuralnetwork = nn.NeuralNetwork(input_size=0)
+neuralnetwork.predict([-87.17266187050359,98.71702637889689,-18.446043165467632,-4.795527156549522,-12.207667731629385,-18.82108626198083])
