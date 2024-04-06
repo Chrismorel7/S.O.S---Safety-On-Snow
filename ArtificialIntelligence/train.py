@@ -5,19 +5,22 @@ import pandas as pd
 import numpy as np
 import neuralnetwork as nn
 
-ITERATION = 1000
+ITERATION = 5
 
 df = pd.read_csv("DataSet/csvFiles/test.csv")
-
-df = np.round(df)
-print(df.head(10))
 
 TrainingDF = df.drop(axis=1, columns={"index"})
 
 training_inputdf = TrainingDF.drop(axis=1, columns="fall")
 training_outputdf = TrainingDF['fall'].to_frame()
 
+np.savetxt("inputmax.txt", np.amax(training_inputdf, axis=0), fmt="%s")
+np.savetxt("inputmin.txt", np.amin(training_inputdf, axis=0), fmt="%s")
+training_inputdf = (training_inputdf - np.amin(training_inputdf, axis=0)) / (np.amax(training_inputdf, axis=0) - np.amin(training_inputdf, axis=0))
+
 print(training_inputdf.head())
+print(training_inputdf.describe())
+
 print("\n")
 print(training_outputdf.head())
 
