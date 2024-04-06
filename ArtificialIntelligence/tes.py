@@ -1,3 +1,0 @@
-import neuralnetwork as nn
-neuralnetwork = nn.NeuralNetwork(input_size=0)
-neuralnetwork.predict([-87.17266187050359,98.71702637889689,-18.446043165467632,-4.795527156549522,-12.207667731629385,-18.82108626198083])
