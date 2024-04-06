@@ -5,7 +5,7 @@ neuralnetwork = nn.NeuralNetwork(input_size=0)
 TrainMaxSeries = np.loadtxt("inputmax.txt")
 TrainMinSeries = np.loadtxt("inputmin.txt")
 
-PredictSeries = np.abs([5.02877697841727,1.484412470023976,0.0,4.43024494142705,10.233226837060704,-6.9850905218317365])
+PredictSeries = np.abs([-2.6834532374100775,9.645083932853716,43.434052757793765,0.0947816826411074,0.3375931842385518,-0.18104366347177853])
 PredictSeries = (PredictSeries - TrainMinSeries) / (TrainMaxSeries - TrainMinSeries)
 
 neuralnetwork.predict(PredictSeries)
