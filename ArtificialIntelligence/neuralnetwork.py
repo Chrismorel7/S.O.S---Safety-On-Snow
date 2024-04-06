@@ -8,8 +8,8 @@ class NeuralNetwork(object):
         self.input_size = input_size
         self.hidden_size = input_size + 1
         self.output_size = 1
-        self.w1 = np.random.randn(self.input_size, self.hidden_size)
-        self.w2 = np.random.randn(self.hidden_size, self.output_size)
+        self.w1 = np.loadtxt("w1.txt")
+        self.w2 = np.loadtxt("w2.txt").reshape(-1, 1)
         self.z = None
         self.z2 = None
         self.z3 = None
