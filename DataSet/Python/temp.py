@@ -2,8 +2,8 @@ import dataset as ds
 import pandas as pd
 import numpy as np
 
-VIDEO = str(12548)
-FALLVALUELIMIT = 30
+VIDEO = str(12549)
+FALLVALUELIMIT = 60
 
 Dataset = ds.DataSet()
 df_acc = Dataset.getdataframeacc("DataSet/csvFiles/Originals/GX0"+VIDEO+"_HERO9 Black-ACCL.csv")
