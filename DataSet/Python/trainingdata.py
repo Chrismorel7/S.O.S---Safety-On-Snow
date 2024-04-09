@@ -20,6 +20,7 @@ df15 = pd.read_csv('DataSet/csvFiles/csvDelta/Input_vdo12659_delta.csv')
 df16 = pd.read_csv('DataSet/csvFiles/csvDelta/Input_vdo12663_delta.csv')
 
 combineddf = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13, df14, df15, df16], ignore_index=True)
+combineddf = combineddf.drop(axis=1, columns={'oldindex'})
 
 print(combineddf.dtypes)
 print(combineddf.head())
