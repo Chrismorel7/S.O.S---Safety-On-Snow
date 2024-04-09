@@ -1,6 +1,7 @@
 """Create a DataSet based on video 1 data."""
 
 import pandas as pd
+import numpy as np
 
 class DataSet(object):
     """Create a DataSet based on GoPro video."""
@@ -62,11 +63,11 @@ class DataSet(object):
         """Add 1 (fall) or 0(user is ok) to the input DataFrame"""
         for i in range(len(self.input)):
             if self.input.loc[i]["acc_x"] <= -fallvaluelimit or self.input.loc[i]["acc_x"] >= fallvaluelimit:
-                self.input.loc[i,['fall']] = int(1)
+                self.input.loc[i,['fall']] = np.absolute(int(1))
             elif self.input.loc[i]["acc_y"] <= -fallvaluelimit or self.input.loc[i]["acc_y"] >= fallvaluelimit:
-                self.input.loc[i,['fall']] = int(1)
+                self.input.loc[i,['fall']] = np.absolute(int(1))
             elif self.input.loc[i]["acc_z"] <= -fallvaluelimit or self.input.loc[i]["acc_z"] >= fallvaluelimit:
-                self.input.loc[i,['fall']] = int(1)
+                self.input.loc[i,['fall']] = np.absolute(int(1))
             else :
                 self.input.loc[i,['fall']] = int(0)
 
