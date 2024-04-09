@@ -2,8 +2,8 @@ import dataset as ds
 import pandas as pd
 import numpy as np
 
-VIDEO = str(11015)
-FALLVALUELIMIT = 40
+VIDEO = str(11042)
+FALLVALUELIMIT = 100
 
 Dataset = ds.DataSet()
 df_acc = Dataset.getdataframeacc("DataSet/csvFiles/Originals/GH0"+VIDEO+"_HERO9 Black-ACCL.csv")
@@ -23,14 +23,13 @@ Dataset.input = Dataset.input.shift(1) - Dataset.input
 print("Video : Convert to delta DONE !")
 
 for i in range(len(Dataset.input)):
-    if Dataset.input.loc[i]["acc_x"] <= -FALLVALUELIMIT or Dataset.input.loc[i]["acc_x"] >= FALLVALUELIMIT:
-        Dataset.input.loc[i,['fall']] = np.absolute(int(1))
-    elif Dataset.input.loc[i]["acc_y"] <= -FALLVALUELIMIT or Dataset.input.loc[i]["acc_y"] >= FALLVALUELIMIT:
-        Dataset.input.loc[i,['fall']] = np.absolute(int(1))
-    elif Dataset.input.loc[i]["acc_z"] <= -FALLVALUELIMIT or Dataset.input.loc[i]["acc_z"] >= FALLVALUELIMIT:
-        Dataset.input.loc[i,['fall']] = np.absolute(int(1))
-    else :
-        Dataset.input.loc[i,['fall']] = int(0)
+    fall_detected = False
+    for axis in ['acc_x', 'acc_y', 'acc_z']:
+        value = Dataset.input.loc[i][axis]
+        if value <= -FALLVALUELIMIT or value >= FALLVALUELIMIT:
+            fall_detected = True
+            break
+    Dataset.input.loc[i, 'fall'] = int(fall_detected)
 
 print("Video : Add Falling Data DONE !")
 print(Dataset.input.dtypes)
