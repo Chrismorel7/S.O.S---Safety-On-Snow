@@ -1,7 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-dfplot = pd.read_csv('DataSet/csvFiles/csvDelta/Input_vdo12639_delta.csv')
+VIDEO = str(12644)
+
+dfplot = pd.read_csv('DataSet/csvFiles/csvDelta/Input_vdo'+VIDEO+'_delta.csv')
 print("\n\nDataframe :\n")
 print(dfplot.dtypes)
 print(dfplot.head())
