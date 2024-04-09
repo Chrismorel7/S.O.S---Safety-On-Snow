@@ -2,12 +2,12 @@ import dataset as ds
 import pandas as pd
 import numpy as np
 
-VIDEO = str(12640)
+VIDEO = str(11015)
 FALLVALUELIMIT = 40
 
 Dataset = ds.DataSet()
-df_acc = Dataset.getdataframeacc("DataSet/csvFiles/Originals/GX0"+VIDEO+"_HERO9 Black-ACCL.csv")
-df_gyr = Dataset.getdataframegyr("DataSet/csvFiles/Originals/GX0"+VIDEO+"_HERO9 Black-GYRO.csv")
+df_acc = Dataset.getdataframeacc("DataSet/csvFiles/Originals/GH0"+VIDEO+"_HERO9 Black-ACCL.csv")
+df_gyr = Dataset.getdataframegyr("DataSet/csvFiles/Originals/GH0"+VIDEO+"_HERO9 Black-GYRO.csv")
 print("Video : Get Data Frame DONE !")
 Dataset.dropcolumn('temperature [°C]', 'cts')
 print("Video : Drop Column DONE !")
