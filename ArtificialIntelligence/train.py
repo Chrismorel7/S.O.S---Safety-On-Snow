@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import neuralnetwork as nn
 
-ITERATION = 1_000_000
+ITERATION = 1
 
 df = pd.read_csv("DataSet/csvFiles/Final/trainingdata.csv")
 
@@ -19,6 +19,7 @@ print(training_inputdf.describe())
 
 np.savetxt("ArtificialIntelligence/Data/inputmax.txt", np.amax(training_inputdf, axis=0), fmt="%s")
 np.savetxt("ArtificialIntelligence/Data/inputmin.txt", np.amin(training_inputdf, axis=0), fmt="%s")
+
 training_inputdf = (training_inputdf - np.amin(training_inputdf, axis=0)) / (np.amax(training_inputdf, axis=0) - np.amin(training_inputdf, axis=0))
 
 print(training_inputdf.head())

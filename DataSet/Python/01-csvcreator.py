@@ -1,13 +1,12 @@
 import dataset as ds
 import pandas as pd
-import numpy as np
 
-VIDEO = str(12548)
-FALLVALUELIMIT = 40
+VIDEO = str(21064)
+FALLVALUELIMIT = 9999
 
 Dataset = ds.DataSet()
-df_acc = Dataset.getdataframeacc("DataSet/csvFiles/Originals/GX0"+VIDEO+"_HERO9 Black-ACCL.csv")
-df_gyr = Dataset.getdataframegyr("DataSet/csvFiles/Originals/GX0"+VIDEO+"_HERO9 Black-GYRO.csv")
+df_acc = Dataset.getdataframeacc("DataSet/csvFiles/Test/GH0"+VIDEO+"_HERO9 Black-ACCL.csv")
+df_gyr = Dataset.getdataframegyr("DataSet/csvFiles/Test/GH0"+VIDEO+"_HERO9 Black-GYRO.csv")
 print("Video : Get Data Frame DONE !")
 Dataset.dropcolumn('temperature [°C]', 'cts')
 print("Video : Drop Column DONE !")
@@ -35,5 +34,5 @@ print("Video : Add Falling Data DONE !")
 print(Dataset.input.dtypes)
 print(Dataset.input.describe())
 print(Dataset.input.head())
-Dataset.createcsv('DataSet/csvFiles/csvDelta/Input_vdo'+VIDEO+'_delta.csv')
+Dataset.createcsv('DataSet/csvFiles/Test/Input_vdo'+VIDEO+'_delta.csv')
 print("Video : csv DONE !")

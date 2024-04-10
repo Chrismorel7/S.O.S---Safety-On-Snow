@@ -1,11 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-VIDEO = str(12548)
+VIDEO = str(11035)
 PATH = 'trainingdata.csv'
 
-#dfplot = pd.read_csv('DataSet/csvFiles/csvDelta/Input_vdo'+VIDEO+'_delta.csv')
-dfplot = pd.read_csv(PATH)
+dfplot = pd.read_csv('DataSet/csvFiles/Test/Input_vdo'+VIDEO+'_delta.csv')
+#dfplot = pd.read_csv(PATH)
 print("\n\nDataframe :\n")
 print(dfplot.dtypes)
 print(dfplot.head())
