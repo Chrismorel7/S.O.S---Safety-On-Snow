@@ -1,6 +1,7 @@
 """Program file to train our AI
     """
 
+import keyboard as kb
 import pandas as pd
 import numpy as np
 import neuralnetwork as nn
@@ -30,16 +31,31 @@ print(training_outputdf.head())
 
 neuralnetwork = nn.NeuralNetwork(len(training_inputdf.axes[1]))
 
+train = True
 for i in range(ITERATION):
     print("\n\n\n ITERATION : ", i, "\n\n\n")
     neuralnetwork.train(training_inputdf, training_outputdf)
     
+    print("Appuyez sur 'q' pour quitter...")
+    while True:
+        if kb.is_pressed('q'):
+            print("\n\nSortie de la boucle.")
+            train = False
+            break
+        else:
+            break
+
+    if not train:
+        break
+    
+    
 neuralnetwork.sauvegardePoids()
-print("Poids sauvegardé")
+print("\n\n\nPoids sauvegardé\n\n\n")
 
 TrainMaxSeries = np.loadtxt("ArtificialIntelligence/Data/inputmax.txt")
 TrainMinSeries = np.loadtxt("ArtificialIntelligence/Data/inputmin.txt")
 print(TrainMaxSeries, TrainMinSeries)
+print("\n\n\n")
 
 PredictSeries1 = np.abs([0.6546762589928061,-2.7122302158273373,0.8129496402877696,-0.05537806176783833,0.024494142705005308,-0.09371671991480302])
 PredictSeries1 = (PredictSeries1 - TrainMinSeries) / (TrainMaxSeries - TrainMinSeries)
@@ -48,6 +64,6 @@ PredictSeries2 = np.abs([-87.17266187050359,98.71702637889689,-18.44604316546763
 PredictSeries2 = (PredictSeries2 - TrainMinSeries) / (TrainMaxSeries - TrainMinSeries)
 
 neuralnetwork.predict(PredictSeries1)
-print("Expected result : 0\n")
+print("\nExpected result : 0\n")
 neuralnetwork.predict(PredictSeries2)
-print("Expected result : 1\n")
+print("\nExpected result : 1\n")
