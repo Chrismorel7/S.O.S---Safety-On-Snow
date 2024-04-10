@@ -8,8 +8,8 @@ class NeuralNetwork(object):
         self.input_size = input_size
         self.hidden_size = input_size + 1
         self.output_size = 1
-        self.w1 = np.loadtxt("w1.txt")
-        self.w2 = np.loadtxt("w2.txt").reshape(-1, 1)
+        self.w1 = np.loadtxt("ArtificialIntelligence/Data/w1.txt")
+        self.w2 = np.loadtxt("ArtificialIntelligence/Data/w2.txt").reshape(-1, 1)
         self.z = None
         self.z2 = None
         self.z3 = None
@@ -49,9 +49,12 @@ class NeuralNetwork(object):
         ai_output = self.forward(training_input)
         self.backward(training_input, training_output, ai_output)
         
+        error_percentage = np.mean(np.abs(self.output_error)) * 100
+        print(f"Error Percentage: {error_percentage}%")
+        
     def sauvegardePoids(self):
-        np.savetxt("w1.txt", self.w1, fmt="%s")
-        np.savetxt("w2.txt", self.w2, fmt="%s")
+        np.savetxt("ArtificialIntelligence/Data/w1.txt", self.w1, fmt="%s")
+        np.savetxt("ArtificialIntelligence/Data/w2.txt", self.w2, fmt="%s")
 
     def predict(self, predictingseries):
         """Fonction de prediction du résultat"""

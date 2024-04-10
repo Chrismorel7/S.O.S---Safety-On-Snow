@@ -7,7 +7,7 @@ import neuralnetwork as nn
 
 ITERATION = 100000
 
-df = pd.read_csv("Training.csv")
+df = pd.read_csv("DataSet/csvFiles/Final/trainingdata.csv")
 
 TrainingDF = df.drop(axis=1, columns={"index"})
 
@@ -17,8 +17,8 @@ training_outputdf = TrainingDF['fall'].to_frame()
 training_inputdf = np.absolute(training_inputdf)
 print(training_inputdf.describe())
 
-np.savetxt("inputmax.txt", np.amax(training_inputdf, axis=0), fmt="%s")
-np.savetxt("inputmin.txt", np.amin(training_inputdf, axis=0), fmt="%s")
+np.savetxt("ArtificialIntelligence/Data/inputmax.txt", np.amax(training_inputdf, axis=0), fmt="%s")
+np.savetxt("ArtificialIntelligence/Data/inputmin.txt", np.amin(training_inputdf, axis=0), fmt="%s")
 training_inputdf = (training_inputdf - np.amin(training_inputdf, axis=0)) / (np.amax(training_inputdf, axis=0) - np.amin(training_inputdf, axis=0))
 
 print(training_inputdf.head())
@@ -36,8 +36,8 @@ for i in range(ITERATION):
 neuralnetwork.sauvegardePoids()
 print("Poids sauvegardé")
 
-TrainMaxSeries = np.loadtxt("inputmax.txt")
-TrainMinSeries = np.loadtxt("inputmin.txt")
+TrainMaxSeries = np.loadtxt("ArtificialIntelligence/Data/inputmax.txt")
+TrainMinSeries = np.loadtxt("ArtificialIntelligence/Data/inputmin.txt")
 print(TrainMaxSeries, TrainMinSeries)
 
 PredictSeries1 = np.abs([0.6546762589928061,-2.7122302158273373,0.8129496402877696,-0.05537806176783833,0.024494142705005308,-0.09371671991480302])

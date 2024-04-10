@@ -26,7 +26,7 @@ print(combineddf.dtypes)
 print(combineddf.head())
 print(combineddf.describe())
 
-combineddf.to_csv('trainingdata.csv')
+combineddf.to_csv('DataSet/csvFiles/Final/combineddata.csv')
 
 fig, axs = plt.subplots(3, 1, layout='constrained')
 axs[0].plot(combineddf.index, combineddf.acc_x, combineddf.index, combineddf.acc_y, combineddf.index, combineddf.acc_z)
