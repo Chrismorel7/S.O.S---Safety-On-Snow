@@ -10,13 +10,13 @@ df1 = df[df['fall'] == 1.0]
 print(df1.describe())
 
 df0 = df[df["fall"] == 0.0]
-df0 = df0.sample(n=1000, random_state=42)
+df0 = df0.sample(n=500, random_state=42)
 print(df0.describe())
 
 
 dfoutput = pd.concat([df0, df1])
 
-dfoutput = dfoutput.sample(frac=1, random_state=42)
+#dfoutput = dfoutput.sample(frac=1, random_state=42)
 
 dfoutput = dfoutput.drop(axis=1, columns={'oldindex'})
 
