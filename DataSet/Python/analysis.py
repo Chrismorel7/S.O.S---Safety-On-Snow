@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 VIDEO = str(12548)
-PATH = 'trainingdata.csv'
+PATH = 'Training.csv'
 
 #dfplot = pd.read_csv('DataSet/csvFiles/csvDelta/Input_vdo'+VIDEO+'_delta.csv')
 dfplot = pd.read_csv(PATH)

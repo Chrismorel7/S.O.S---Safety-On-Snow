@@ -5,9 +5,9 @@ import pandas as pd
 import numpy as np
 import neuralnetwork as nn
 
-ITERATION = 100
+ITERATION = 100000
 
-df = pd.read_csv("trainingdata.csv")
+df = pd.read_csv("Training.csv")
 
 TrainingDF = df.drop(axis=1, columns={"index"})
 
