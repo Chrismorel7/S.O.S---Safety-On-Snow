@@ -2,8 +2,8 @@ import neuralnetwork as nn
 import numpy as np
 neuralnetwork = nn.NeuralNetwork(input_size=0)
 
-TrainMaxSeries = np.loadtxt("inputmax.txt")
-TrainMinSeries = np.loadtxt("inputmin.txt")
+TrainMaxSeries = np.loadtxt("ArtificialIntelligence/Data/inputmax.txt")
+TrainMinSeries = np.loadtxt("ArtificialIntelligence/Data/inputmin.txt")
 
 PredictSeries = np.abs([-42.37649880095923,
                         88.58033573141486,
