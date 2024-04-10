@@ -5,9 +5,9 @@ import pandas as pd
 import numpy as np
 import neuralnetwork as nn
 
-ITERATION = 100000
+ITERATION = 100
 
-df = pd.read_csv("DataSet/csvFiles/test.csv")
+df = pd.read_csv("trainingdata.csv")
 
 TrainingDF = df.drop(axis=1, columns={"index"})
 
@@ -47,5 +47,6 @@ PredictSeries2 = np.abs([-87.17266187050359,98.71702637889689,-18.44604316546763
 PredictSeries2 = (PredictSeries2 - TrainMinSeries) / (TrainMaxSeries - TrainMinSeries)
 
 neuralnetwork.predict(PredictSeries1)
-
+print("Expected result : 0\n")
 neuralnetwork.predict(PredictSeries2)
+print("Expected result : 1\n")

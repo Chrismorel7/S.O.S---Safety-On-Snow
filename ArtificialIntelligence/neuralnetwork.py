@@ -29,21 +29,9 @@ class NeuralNetwork(object):
     def forward(self, training_input):
         """Fonction d'entrainement avec la méthode forward"""
         
-        #MAX_VALUE_EXP = 709
-        #MIN_VALUE_EXP = -709
-        
         self.z = np.dot(training_input, self.w1)
-        
-        #self.z[self.z > MAX_VALUE_EXP] = MAX_VALUE_EXP
-        #self.z[self.z < MIN_VALUE_EXP] = MIN_VALUE_EXP
-        
         self.z2 = self.sigmoid(self.z)
-        
         self.z3 = np.dot(self.z2, self.w2)
-        
-        #self.z3[self.z3 > MAX_VALUE_EXP] = MAX_VALUE_EXP
-        #self.z3[self.z3 < MIN_VALUE_EXP] = MIN_VALUE_EXP
-        
         ai_output = self.sigmoid(self.z3)
         return ai_output
 
