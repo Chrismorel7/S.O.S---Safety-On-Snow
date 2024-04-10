@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import neuralnetwork as nn
 
-ITERATION = 100000
+ITERATION = 1_000_000
 
 df = pd.read_csv("DataSet/csvFiles/Final/trainingdata.csv")
 
