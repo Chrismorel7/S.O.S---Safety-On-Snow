@@ -51,19 +51,3 @@ for i in range(ITERATION):
     
 neuralnetwork.sauvegardePoids()
 print("\n\n\nPoids sauvegardé\n\n\n")
-
-TrainMaxSeries = np.loadtxt("ArtificialIntelligence/Data/inputmax.txt")
-TrainMinSeries = np.loadtxt("ArtificialIntelligence/Data/inputmin.txt")
-print(TrainMaxSeries, TrainMinSeries)
-print("\n\n\n")
-
-PredictSeries1 = np.abs([0.6546762589928061,-2.7122302158273373,0.8129496402877696,-0.05537806176783833,0.024494142705005308,-0.09371671991480302])
-PredictSeries1 = (PredictSeries1 - TrainMinSeries) / (TrainMaxSeries - TrainMinSeries)
-
-PredictSeries2 = np.abs([-87.17266187050359,98.71702637889689,-18.446043165467632,-4.795527156549522,-12.207667731629385,-18.82108626198083])
-PredictSeries2 = (PredictSeries2 - TrainMinSeries) / (TrainMaxSeries - TrainMinSeries)
-
-neuralnetwork.predict(PredictSeries1)
-print("\nExpected result : 0\n")
-neuralnetwork.predict(PredictSeries2)
-print("\nExpected result : 1\n")
