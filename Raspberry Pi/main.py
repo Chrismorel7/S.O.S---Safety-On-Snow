@@ -15,7 +15,7 @@ ssid = "Safety-On-Snow"
 
 #------------------------------------------------
 
-#Wifilib.connect_to_wifi(interface, ssid)
+Wifilib.connect_to_wifi(interface, ssid)
 
 #------------------------------------------------
 
